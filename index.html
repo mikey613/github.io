@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李文豪 & 叶霞 | 我们订婚啦</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #e84393;
+            --secondary-color: #fd79a8;
+            --accent-color: #c44569;
+            --light-color: #f9f0ff;
+            --text-color: #333;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #f9f0ff 0%, #e6f3ff 100%);
+            min-height: 100vh;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* 背景装饰元素 */
+        .bg-decoration {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .bg-heart {
+            top: 10%;
+            right: 5%;
+            font-size: 120px;
+            color: var(--primary-color);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .bg-ring {
+            bottom: 15%;
+            left: 5%;
+            font-size: 100px;
+            color: var(--accent-color);
+            animation: float 8s ease-in-out infinite 1s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .container {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header {
+            background: white;
+            border-radius: 25px;
+            padding: 30px 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .ring-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ffd6e7, #ff9ec0);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .couple-names {
+            font-size: 28px;
+            color: var(--accent-color);
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        .names {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .name {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #f8efff, #e6f3ff);
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .name:hover {
+            transform: translateY(-5px);
+        }
+        
+        .heart {
+            color: var(--primary-color);
+            font-size: 28px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .section-title {
+            color: var(--accent-color);
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            font-size: 24px;
+        }
+        
+        /* 照片轮播样式 */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1), 
+                        0 0 0 8px #fff,
+                        0 0 0 10px rgba(255, 107, 157, 0.1);
+            margin-bottom: 15px;
+        }
+        
+        .carousel {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            position: relative;
+        }
+        
+        .carousel-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .carousel-item-content {
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 20px;
+            color: var(--primary-color);
+            transition: all 0.3s;
+        }
+        
+        .carousel-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-prev {
+            left: 15px;
+        }
+        
+        .carousel-next {
+            right: 15px;
+        }
+        
+        /* 倒计时样式 */
+        .countdown-numbers {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .countdown-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--accent-color);
+            display: block;
+            min-width: 60px;
+            padding: 10px;
+            background: linear-gradient(135deg, #f8efff, #e6f3ff);
+            border-radius: 10px;
+            margin-bottom: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .countdown-label {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 20px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary-color);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        /* 祝福按钮样式 */
+        .wish-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .wish-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.4);
+        }
+        
+        /* 祝福弹窗样式 */
+        .wish-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wish-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            animation: popIn 0.5s ease-out;
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: #888;
+            cursor: pointer;
+        }
+        
+        .wish-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .submit-wish {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        /* 祝福墙样式 */
+        .wish-wall {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .wish-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .wish-author {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        
+        .wish-text {
+            color: #555;
+        }
+        
+        .wish-time {
+            font-size: 12px;
+            color: #888;
+            text-align: right;
+            margin-top: 5px;
+        }
+        
+        /* 分享功能样式 */
+        .share-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .share-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            animation: popIn 0.5s ease-out;
+        }
+        
+        .share-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .share-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .share-option:hover {
+            background: #f5f5f5;
+        }
+        
+        .share-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .wechat-icon {
+            background: #07C160;
+            color: white;
+        }
+        
+        .weibo-icon {
+            background: #E6162D;
+            color: white;
+        }
+        
+        .qq-icon {
+            background: #12B7F5;
+            color: white;
+        }
+        
+        .link-icon {
+            background: #FF6B6B;
+            color: white;
+        }
+        
+        .copy-link {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .copy-link input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            border-right: none;
+        }
+        
+        .copy-link button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        
+        .copy-success {
+            color: #07C160;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #888;
+            font-size: 14px;
+            padding: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px) rotate(5deg);
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .couple-names {
+                font-size: 24px;
+            }
+            
+            .names {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .countdown-number {
+                font-size: 24px;
+                min-width: 50px;
+            }
+            
+            .carousel-container {
+                height: 250px;
+            }
+            
+            .share-options {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景装饰 -->
+    <div class="bg-decoration bg-heart">❤️</div>
+    <div class="bg-decoration bg-ring">💍</div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="ring-icon">💍</div>
+            <h1>我们订婚啦</h1>
+            <p class="subtitle">李文豪 & 叶霞 | 爱的序章</p>
+            <div class="names">
+                <div class="name" id="groom-name">李文豪</div>
+                <div class="heart">❤️</div>
+                <div class="name" id="bride-name">叶霞</div>
+            </div>
+        </div>
+        
+        <!-- 重要日期 -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> 重要日期</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023年5月20日</div>
+                    <div class="timeline-content">我们第一次相遇，命运从此交织</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024年2月14日</div>
+                    <div class="timeline-content">情人节那天，我们确认了彼此的心意</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date" id="engagement-date">2026年1月25日</div>
+                    <div class="timeline-content">我们正式订婚，开启人生新篇章</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date" id="wedding-date">2025年10月1日</div>
+                    <div class="timeline-content">期待与您共赴婚礼，见证我们的幸福时刻</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 照片轮播 -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-images"></i> 我们的幸福瞬间</h2>
+            <div class="carousel-container">
+                <div class="carousel" id="photo-carousel">
+                    <!-- 轮播项将通过JS动态添加 -->
+                </div>
+                <div class="carousel-nav carousel-prev">❮</div>
+                <div class="carousel-nav carousel-next">❯</div>
+            </div>
+            <div class="carousel-controls" id="carousel-dots">
+                <!-- 轮播点将通过JS动态添加 -->
+            </div>
+        </div>
+        
+        <!-- 爱的故事 -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-heart"></i> 我们的故事</h2>
+            <p style="text-align: left; margin-bottom: 15px; line-height: 1.8;">
+                从初次相遇的心动，到相知相守的温暖，我们的爱情故事如同春日里绽放的花朵，自然而美好。每一次携手，每一次微笑，都成为了我们心中最珍贵的记忆。
+            </p>
+            <p style="text-align: left; margin-bottom: 15px; line-height: 1.8;">
+                感谢命运让我们相遇，感谢时光让我们相知。今天，我们决定携手共度余生，用爱书写属于我们的未来篇章。
+            </p>
+            <p style="text-align: left; line-height: 1.8;">
+                亲爱的家人朋友们，感谢你们一直以来的陪伴与支持。在这个特别的日子里，我们希望能与你们分享这份喜悦和幸福。
+            </p>
+        </div>
+        
+        <!-- 婚礼倒计时 -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-hourglass-half"></i> 婚礼倒计时</h2>
+            <div class="countdown-numbers">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">0</span>
+                    <span class="countdown-label">天</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">0</span>
+                    <span class="countdown-label">时</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">0</span>
+                    <span class="countdown-label">分</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">0</span>
+                    <span class="countdown-label">秒</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 祝福我们 -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-blessing"></i> 祝福墙</h2>
+            <p style="margin-bottom: 20px;">您的祝福是我们收到的最美礼物</p>
+            <button class="wish-btn" id="open-wish-modal">写下您的祝福</button>
+            
+            <div class="wish-wall" id="wish-wall">
+                <!-- 祝福内容将通过JS动态添加 -->
+            </div>
+        </div>
+        
+        <!-- 页脚 -->
+        <div class="footer">
+            <button class="wish-btn" id="open-share-modal" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);">分享喜讯</button>
+            <p style="margin-top: 20px;">感谢您的见证与祝福 ❤️</p>
+            <div class="social-icons">
+                <a href="#" title="分享到微信" id="share-wechat">
+                    <i class="fab fa-weixin"></i>
+                </a>
+                <a href="#" title="分享到微博" id="share-weibo">
+                    <i class="fab fa-weibo"></i>
+                </a>
+                <a href="#" title="分享到QQ" id="share-qq">
+                    <i class="fab fa-qq"></i>
+                </a>
+            </div>
+            <p>李文豪 & 叶霞 · 2026</p>
+        </div>
+    </div>
+    
+    <!-- 祝福弹窗 -->
+    <div class="wish-modal" id="wish-modal">
+        <div class="wish-content">
+            <span class="close-modal" id="close-wish-modal">&times;</span>
+            <h2>送上您的祝福</h2>
+            <input type="text" id="wish-author" class="wish-input" placeholder="您的姓名（可选）" style="min-height: auto; margin-bottom: 10px;">
+            <textarea class="wish-input" id="wish-text" placeholder="请输入您的祝福语..."></textarea>
+            <button class="submit-wish" id="submit-wish">发送祝福</button>
+        </div>
+    </div>
+    
+    <!-- 分享弹窗 -->
+    <div class="share-modal" id="share-modal">
+        <div class="share-content">
+            <span class="close-modal" id="close-share-modal">&times;</span>
+            <h2>分享喜讯</h2>
+            <p>将这份喜悦分享给亲朋好友</p>
+            
+            <div class="share-options">
+                <div class="share-option" id="share-wechat-btn">
+                    <div class="share-icon wechat-icon">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                    <span>微信</span>
+                </div>
+                
+                <div class="share-option" id="share-weibo-btn">
+                    <div class="share-icon weibo-icon">
+                        <i class="fab fa-weibo"></i>
+                    </div>
+                    <span>微博</span>
+                </div>
+                
+                <div class="share-option" id="share-qq-btn">
+                    <div class="share-icon qq-icon">
+                        <i class="fab fa-qq"></i>
+                    </div>
+                    <span>QQ</span>
+                </div>
+            </div>
+            
+            <div class="copy-link">
+                <input type="text" id="page-url" value="加载中..." readonly>
+                <button id="copy-url">复制</button>
+            </div>
+            <div class="copy-success" id="copy-success">链接已复制到剪贴板！</div>
+            
+            <div style="margin-top: 20px; font-size: 14px; color: #888;">
+                <p>提示：如果页面已部署到服务器，分享链接将更有效</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 配置信息
+        const config = {
+            groomName: "李文豪",
+            brideName: "叶霞", 
+            engagementDate: "2026-01-25",
+            weddingDate: "2026-10-01",
+            // 照片配置 - 可以添加多张照片路径
+            photos: [
+                {
+                    url: "1.png", // 替换为您的照片路径
+                    caption: "我们的幸福时刻"
+                },
+                {
+                    url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    caption: "浪漫时光"
+                },
+                {
+                    url: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    caption: "甜蜜回忆"
+                }
+            ]
+        };
+        
+        // 初始化页面内容
+        document.getElementById('groom-name').textContent = config.groomName;
+        document.getElementById('bride-name').textContent = config.brideName;
+        document.getElementById('engagement-date').textContent = formatDate(config.engagementDate);
+        document.getElementById('wedding-date').textContent = formatDate(config.weddingDate);
+        
+        // 照片轮播功能
+        let currentSlide = 0;
+        const carousel = document.getElementById('photo-carousel');
+        const dotsContainer = document.getElementById('carousel-dots');
+        
+        // 初始化轮播
+        function initCarousel() {
+            // 清空现有内容
+            carousel.innerHTML = '';
+            dotsContainer.innerHTML = '';
+            
+            // 添加轮播项
+            config.photos.forEach((photo, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-item';
+                slide.style.backgroundImage = `url(${photo.url})`;
+                
+                const content = document.createElement('div');
+                content.className = 'carousel-item-content';
+                content.innerHTML = `<h3>${photo.caption}</h3>`;
+                
+                slide.appendChild(content);
+                carousel.appendChild(slide);
+                
+                // 添加轮播点
+                const dot = document.createElement('div');
+                dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            
+            // 自动轮播
+            setInterval(nextSlide, 5000);
+        }
+        
+        // 切换到指定幻灯片
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+        
+        // 下一张幻灯片
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % config.photos.length;
+            updateCarousel();
+        }
+        
+        // 上一张幻灯片
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + config.photos.length) % config.photos.length;
+            updateCarousel();
+        }
+        
+        // 更新轮播显示
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // 更新轮播点状态
+            const dots = document.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        // 绑定轮播控制
+        document.querySelector('.carousel-prev').addEventListener('click', prevSlide);
+        document.querySelector('.carousel-next').addEventListener('click', nextSlide);
+        
+        // 倒计时功能
+        function updateCountdown() {
+            const weddingDate = new Date(config.weddingDate);
+            const now = new Date();
+            const diff = weddingDate - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                document.querySelector('.countdown-title').textContent = "已步入婚姻殿堂！";
+                document.querySelector('.countdown-numbers').innerHTML = '<div style="color:#c44569;font-size:20px;padding:20px;">💕 幸福美满 💕</div>';
+            }
+        }
+        
+        // 日期格式化
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            return `${year}年${month}月${day}日`;
+        }
+        
+        // 祝福功能
+        const wishModal = document.getElementById('wish-modal');
+        const openWishBtn = document.getElementById('open-wish-modal');
+        const closeWishBtn = document.getElementById('close-wish-modal');
+        const submitWishBtn = document.getElementById('submit-wish');
+        const wishWall = document.getElementById('wish-wall');
+        
+        // 初始化祝福墙
+        function initWishWall() {
+            const wishes = JSON.parse(localStorage.getItem('engagementWishes')) || [];
+            wishWall.innerHTML = '';
+            
+            if (wishes.length === 0) {
+                wishWall.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">暂无祝福，快来写下第一条祝福吧！</p>';
+                return;
+            }
+            
+            // 按时间倒序显示祝福
+            wishes.reverse().forEach(wish => {
+                const wishItem = document.createElement('div');
+                wishItem.className = 'wish-item';
+                wishItem.innerHTML = `
+                    <div class="wish-author">${wish.author || '匿名祝福'}</div>
+                    <div class="wish-text">${wish.text}</div>
+                    <div class="wish-time">${formatWishTime(wish.time)}</div>
+                `;
+                wishWall.appendChild(wishItem);
+            });
+        }
+        
+        // 格式化祝福时间
+        function formatWishTime(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diff = now - date;
+            
+            // 如果是今天内
+            if (diff < 24 * 60 * 60 * 1000) {
+                if (diff < 60 * 60 * 1000) {
+                    const minutes = Math.floor(diff / (60 * 1000));
+                    return `${minutes}分钟前`;
+                } else {
+                    const hours = Math.floor(diff / (60 * 60 * 1000));
+                    return `${hours}小时前`;
+                }
+            } else {
+                return `${date.getMonth()+1}月${date.getDate()}日 ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+            }
+        }
+        
+        // 提交祝福
+        function submitWish() {
+            const author = document.getElementById('wish-author').value.trim();
+            const text = document.getElementById('wish-text').value.trim();
+            
+            if (!text) {
+                alert('请输入祝福语！');
+                return;
+            }
+            
+            const wish = {
+                author: author || '匿名祝福',
+                text: text,
+                time: new Date().getTime()
+            };
+            
+            // 保存到localStorage
+            const wishes = JSON.parse(localStorage.getItem('engagementWishes')) || [];
+            wishes.push(wish);
+            localStorage.setItem('engagementWishes', JSON.stringify(wishes));
+            
+            // 更新祝福墙
+            initWishWall();
+            
+            // 关闭弹窗并清空表单
+            wishModal.style.display = 'none';
+            document.getElementById('wish-author').value = '';
+            document.getElementById('wish-text').value = '';
+            
+            // 显示成功提示
+            alert('祝福发送成功！感谢您的祝福！');
+        }
+        
+        // 分享功能
+        const shareModal = document.getElementById('share-modal');
+        const openShareBtn = document.getElementById('open-share-modal');
+        const closeShareBtn = document.getElementById('close-share-modal');
+        const copyUrlBtn = document.getElementById('copy-url');
+        const pageUrlInput = document.getElementById('page-url');
+        const copySuccess = document.getElementById('copy-success');
+        
+        // 初始化分享链接
+        function initShareLink() {
+            // 尝试获取当前页面URL，如果是本地文件则显示提示
+            if (window.location.href.startsWith('file://')) {
+                pageUrlInput.value = '请将页面部署到服务器以获得有效链接';
+                pageUrlInput.style.color = '#ff6b6b';
+                copyUrlBtn.disabled = true;
+            } else {
+                pageUrlInput.value = window.location.href;
+                pageUrlInput.style.color = '#333';
+                copyUrlBtn.disabled = false;
+            }
+        }
+        
+        // 复制链接功能
+        function copyUrlToClipboard() {
+            if (pageUrlInput.value === '请将页面部署到服务器以获得有效链接') {
+                alert('本地文件无法生成有效链接，请将页面部署到服务器后使用此功能');
+                return;
+            }
+            
+            pageUrlInput.select();
+            pageUrlInput.setSelectionRange(0, 99999); // 对于移动设备
+            
+            try {
+                navigator.clipboard.writeText(pageUrlInput.value).then(() => {
+                    copySuccess.style.display = 'block';
+                    setTimeout(() => {
+                        copySuccess.style.display = 'none';
+                    }, 2000);
+                });
+            } catch (err) {
+                // 降级方案
+                document.execCommand('copy');
+                copySuccess.style.display = 'block';
+                setTimeout(() => {
+                    copySuccess.style.display = 'none';
+                }, 2000);
+            }
+        }
+        
+        // 分享到社交媒体
+        function shareToSocial(platform) {
+            const url = encodeURIComponent(pageUrlInput.value);
+            const title = encodeURIComponent('李文豪 & 叶霞 | 我们订婚啦');
+            const text = encodeURIComponent('快来祝福我们吧！');
+            
+            let shareUrl = '';
+            
+            switch(platform) {
+                case 'wechat':
+                    // 微信分享需要借助微信JS-SDK，这里只是示例
+                    alert('请点击右上角菜单，选择"分享到朋友圈"或"发送给朋友"');
+                    break;
+                case 'weibo':
+                    shareUrl = `http://service.weibo.com/share/share.php?url=${url}&title=${title}&content=utf-8`;
+                    window.open(shareUrl, '_blank', 'width=615,height=505');
+                    break;
+                case 'qq':
+                    shareUrl = `http://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}&summary=${text}`;
+                    window.open(shareUrl, '_blank', 'width=615,height=505');
+                    break;
+            }
+        }
+        
+        // 绑定事件
+        openWishBtn.addEventListener('click', () => {
+            wishModal.style.display = 'flex';
+        });
+        
+        closeWishBtn.addEventListener('click', () => {
+            wishModal.style.display = 'none';
+        });
+        
+        submitWishBtn.addEventListener('click', submitWish);
+        
+        openShareBtn.addEventListener('click', () => {
+            initShareLink();
+            shareModal.style.display = 'flex';
+        });
+        
+        closeShareBtn.addEventListener('click', () => {
+            shareModal.style.display = 'none';
+        });
+        
+        copyUrlBtn.addEventListener('click', copyUrlToClipboard);
+        
+        document.getElementById('share-wechat-btn').addEventListener('click', () => {
+            shareToSocial('wechat');
+        });
+        
+        document.getElementById('share-weibo-btn').addEventListener('click', () => {
+            shareToSocial('weibo');
+        });
+        
+        document.getElementById('share-qq-btn').addEventListener('click', () => {
+            shareToSocial('qq');
+        });
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', (e) => {
+            if (e.target === wishModal) {
+                wishModal.style.display = 'none';
+            }
+            if (e.target === shareModal) {
+                shareModal.style.display = 'none';
+            }
+        });
+        
+        // 添加点击祝福效果
+        document.addEventListener('click', function(e) {
+            // 排除按钮点击，防止重复效果
+            if (e.target.classList.contains('wish-btn') || 
+                e.target.closest('.wish-modal') || 
+                e.target.closest('.share-modal') ||
+                e.target.classList.contains('carousel-nav') ||
+                e.target.closest('.carousel-dot')) {
+                return;
+            }
+            
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            heart.style.opacity = '1';
+            heart.style.transition = 'all 1s';
+            heart.style.zIndex = '9999';
+            heart.style.pointerEvents = 'none';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.style.opacity = '0';
+                heart.style.transform = 'translateY(-100px)';
+            }, 100);
+            
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    document.body.removeChild(heart);
+                }
+            }, 1100);
+        });
+        
+        // 页面加载完成后初始化
+        window.addEventListener('load', () => {
+            initCarousel();
+            initWishWall();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>
